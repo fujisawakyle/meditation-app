@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 import Entry from './Entry.js';
 
 class Journal extends React.Component {
@@ -24,4 +24,4 @@ class Journal extends React.Component {
   }
 }
 
-module.exports = Journal;
+export default Journal;
