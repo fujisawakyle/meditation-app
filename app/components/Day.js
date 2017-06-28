@@ -3,7 +3,7 @@ const Timer = require('./Timer.js');
 const Journal = require('./Journal.js');
 
 
-class App extends React.Component {
+class Day extends React.Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App;
+module.exports = Day;
