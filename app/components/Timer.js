@@ -1,5 +1,6 @@
-const React = require('react');
-const Clock = require('./Clock.js');
+import React, { Component } from 'react'
+import Clock from './Clock';
+import Countdown from './Countdown';
 
 const style = {
     timerBox : {
@@ -13,7 +14,8 @@ const style = {
     }
 }
 
-class Timer extends React.Component {
+
+class Timer extends Component {
     render () {
         return (
             <div style={styles.timerBox} className='timerBox'>
@@ -24,4 +26,4 @@ class Timer extends React.Component {
     }
 }
 
-module.exports = Timer;
+export default Timer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Entry from './Entry.js';
+import Entry from './Entry';
 
 const style = {
     journalBox : {
