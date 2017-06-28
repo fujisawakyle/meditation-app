@@ -1,9 +1,10 @@
 const React = require('react');
-const Timer = require('./Timer.js');
-const Journal = require('./Journal.js');
+import Timer from './Timer';
+import Journal from './Journal'
 
+require('babel-polyfill');
 
-class App extends React.Component {
+class Day extends React.Component {
   render() {
     return (
       <div>
@@ -14,4 +15,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App;
+export default Day;

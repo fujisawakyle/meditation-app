@@ -1,5 +1,5 @@
 import React from 'react';
-const Entry = require('./Entry.js')
+import Entry from './Entry';
 
 class Journal extends React.Component {
     constructor(props) {

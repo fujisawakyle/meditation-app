@@ -42,4 +42,4 @@ class Entry extends React.Component {
   }
 }
 
-module.exports = Entry;
+export default Entry;

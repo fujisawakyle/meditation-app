@@ -1,6 +1,6 @@
 const React = require('react');
+import Countdown from './Countdown';
 const PropTypes = require('prop-types');
-const Example = require('./Example.js');
 
 class Clock extends React.Component {
     constructor(props) {
@@ -84,4 +84,4 @@ class Clock extends React.Component {
     }
 }
 
-module.exports = Clock;
+export default Clock;
