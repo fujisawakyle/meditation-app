@@ -1,0 +1,26 @@
+body {
+    background-color: white;
+}
+.timerBox {
+    background-color: #fdf;
+    height: 140px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding:0px;
+}
+
+.journalBox {
+    background-color: #adf;
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.clockDisplay {
+    width: 40px;
+    height:30px;
+    font-size: 1.5em;
+}
