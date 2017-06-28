@@ -20,7 +20,8 @@ class Entry extends React.Component {
         })
     }
     handleSubmit(event){ 
-        //store to server
+        //set up an object so that we can send it.
+        //store to server (API call)
     }
     render() {
         return (

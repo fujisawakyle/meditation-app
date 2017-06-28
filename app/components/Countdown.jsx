@@ -55,7 +55,7 @@ class Countdown extends React.Component {
   render() {
     return(
       <div>
-          props
+        props
         {this.props.seconds}
         state
         {this.state.seconds}

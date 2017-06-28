@@ -1,6 +1,17 @@
 import React from 'react';
 import Entry from './Entry';
 
+const style = {
+    journalBox : {
+        backgroundColor: '#adf',
+        height: '100px',
+        width: '200px',
+        textAlign: 'center',
+        border: '1px solid black',
+        borderRadius: '10px'
+    }
+}
+
 class Journal extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +27,7 @@ class Journal extends React.Component {
     }
     render() {
         return (
-        <div className='journalBox'> 
+        <div style={style.journalBox} className='journalBox'> 
             <h3>Journal</h3>
             <Entry />
         </div>  

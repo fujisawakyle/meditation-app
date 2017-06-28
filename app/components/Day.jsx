@@ -15,4 +15,8 @@ class Day extends React.Component {
   }
 }
 
+<<<<<<< HEAD
+module.exports = Day;
+=======
 export default Day;
+>>>>>>> c6227de84c7609ff95cd808f1337c9d8728643d3
