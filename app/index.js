@@ -2,8 +2,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 require('./index.css');
-var Day = require('./components/Day.js')
-var Timer = require('./components/Timer.js')
+import Day from './components/Day'
+import Timer from './components/Timer';
 
 ReactDOM.render(
   <Day />,

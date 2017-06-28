@@ -78,7 +78,7 @@ class Clock extends React.Component {
                 {this.state.seconds}
                 <button onClick={this.startTimer}>Start</button>
                 m: {this.state.time.m} s: {this.state.time.s}
-                <Example seconds={this.state.seconds}/>
+                
             </form>
         )
     }
