@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-class Countdown extends React.Component {
+class Countdown extends Component {
   constructor(props) {
     super(props);
-    this.state = { time: {}, seconds: this.props.seconds };
+    console.log(props)
+    this.state = { time: {}, seconds: props.seconds };
 
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -27,12 +28,23 @@ class Countdown extends React.Component {
     return obj;
   }
 
+  // This is what was missing to update this component when the props.seconds changes
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.seonds !== this.props.seconds) {
+      this.setState({ seconds: nextProps.seconds })
+    }
+  }
+
   componentDidMount() {
+    console.log(this.props)
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
   }
 
-  startTimer() {
+  startTimer(e) {
+    e.preventDefault();
+    this.props.getSeconds();
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
@@ -55,10 +67,6 @@ class Countdown extends React.Component {
   render() {
     return(
       <div>
-        props
-        {this.props.seconds}
-        state
-        {this.state.seconds}
         <button onClick={this.startTimer}>Start</button>
         m: {this.state.time.m} s: {this.state.time.s}
       </div>
