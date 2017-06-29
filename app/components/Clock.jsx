@@ -1,7 +1,6 @@
 const React = require('react');
 import Countdown from './Countdown';
 const PropTypes = require('prop-types');
-const Countdown = require('./Countdown.js');
 
 const style = {
     clockDisplay : {

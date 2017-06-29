@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { Component } from 'react';
 
 class Countdown extends React.Component {
   constructor(props) {
