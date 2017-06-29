@@ -38,7 +38,11 @@ class Clock extends React.Component {
                     </input>
                      minutes
                 </div>
-                <Countdown seconds={this.state.seconds}/>
+                state 
+                {this.state.seconds}
+                <button onClick={this.startTimer}>Start</button>
+                m: {this.state.time.m} s: {this.state.time.s}
+                
             </form>
         )
     }

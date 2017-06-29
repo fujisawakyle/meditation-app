@@ -26,20 +26,34 @@ module.exports = {
     rules: [
       {
           test: /\.(js|jsx)$/,
-          include: path.resolve(__dirname, 'js'),
+          include: path.resolve(__dirname, 'app'),
           use: {
               loader: 'babel-loader',
               query: {
                   plugins: [
-                      'transform-react-jsx', ['react-css-modules', {
-                          context,
-                      }],
+                      'transform-react-jsx'
                   ],
               },
           },
       },
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]}
+      {
+        include: path.resolve(__dirname, 'assets'),
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', loader: ['css-loader'] }),
+        test: /\.css$/,
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'app'),
+        use: {
+          loader: 'babel-loader',
+          query: {
+            plugins: [
+              'transform-react-jsx',
+            ],
+          },
+        },
+      }
     ]
   },
   plugins: [
