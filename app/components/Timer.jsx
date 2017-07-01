@@ -18,7 +18,7 @@ const style = {
 class Timer extends Component {
     render () {
         return (
-            <div style={styles.timerBox} className='timerBox'>
+            <div style={style.timerBox} className='timerBox'>
                 <h3>Timer</h3>
                 <Clock />
             </div>

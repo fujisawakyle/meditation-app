@@ -1,7 +1,6 @@
-const React = require('react');
+import React, { Component } from 'react'
 import Countdown from './Countdown';
 const PropTypes = require('prop-types');
-const Countdown = require('./Countdown.js');
 
 const style = {
     clockDisplay : {
@@ -11,7 +10,7 @@ const style = {
     }
 }
 
-class Clock extends React.Component {
+class Clock extends Component {
     constructor(props) {
         super(props);
 
@@ -21,9 +20,14 @@ class Clock extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     };
     handleChange(event) {
+        event.preventDefault();
         this.setState({
             seconds: event.target.value * 60
         });
+    }
+
+    getSeconds() {
+
     }
 
     render () {
@@ -32,16 +36,14 @@ class Clock extends React.Component {
                 <div className='clockBox'>
                     <input 
                         className='clockDisplay'
-                        type='text'
+                        type='number'
                         value={this.state.value}
                         onChange={this.handleChange}>
                     </input>
                      minutes
                 </div>
-                state 
-                {this.state.seconds}
-                <button onClick={this.startTimer}>Start</button>
-                m: {this.state.time.m} s: {this.state.time.s}
+                <Countdown seconds={this.state.seconds} getSeconds={this.getSeconds}/>
+                {/*m: {this.state.time.m} s: {this.state.time.s}*/}
                 
             </form>
         )
