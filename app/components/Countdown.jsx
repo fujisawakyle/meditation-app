@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import ShowRemaining from './ShowRemaining'
 
 class Countdown extends Component {
   constructor(props) {
     super(props);
     console.log(props)
-    this.state = { time: {}, seconds: props.seconds };
+    this.state = { 
+      time: {}, 
+      seconds: props.seconds, 
+      logTime: props.logTime,
+      showTime: false 
+    };
 
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -31,8 +37,11 @@ class Countdown extends Component {
   // This is what was missing to update this component when the props.seconds changes
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.seonds !== this.props.seconds) {
-      this.setState({ seconds: nextProps.seconds })
+    if (nextProps.seconds !== this.props.seconds) {
+      this.setState({ 
+        seconds: nextProps.seconds,
+        logTime: nextProps.logTime 
+      })
     }
   }
 
@@ -43,24 +52,40 @@ class Countdown extends Component {
   }
 
   startTimer(e) {
+    this.setState({
+      showTime: !this.state.showTime
+    })
     e.preventDefault();
     this.props.getSeconds();
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
+    
   }
 
   countDown() {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
+    let log = this.state.logTime - 1;
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
+      logTime: log,
     });
     
     // Check if we're at zero.
-    if (seconds == 0) { 
+    if (seconds === 0) { 
       clearInterval(this.timer);
+    }
+
+    //log time every 1 minute
+    if (log === 0) {
+      alert('logged a minute');
+      //add 1 min to today's time.
+      this.setState({
+        logTime: 60
+      })
+      
     }
   }
 
@@ -68,7 +93,13 @@ class Countdown extends Component {
     return(
       <div>
         <button onClick={this.startTimer}>Start</button>
-        m: {this.state.time.m} s: {this.state.time.s}
+        {this.state.showTime && 
+          <ShowRemaining 
+            hours={this.state.time.h} 
+            minutes={this.state.time.m} 
+            seconds={this.state.time.s} 
+            logTime={this.state.logTime}
+          />}
       </div>
     );
   }

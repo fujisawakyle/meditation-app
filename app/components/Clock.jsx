@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Countdown from './Countdown';
-const PropTypes = require('prop-types');
 
 const style = {
     clockDisplay : {
@@ -10,20 +9,50 @@ const style = {
     }
 }
 
+//create a function for the rendered 'input' form
+//create a state with a toggle
+//call the input form when the toggle is true
+//turn off the input form when the button is clicked.
+
+/*class ClockBox extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            seconds: this.props.seconds
+        }
+
+        
+    }
+    
+    
+    render() {
+        return (
+           
+        )
+    }
+}
+*/
+
 class Clock extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { seconds: '' };
+        this.state = { 
+            startToggle: true, 
+            seconds: '' 
+        };
         this.timer = 0;
 
         this.handleChange = this.handleChange.bind(this);
     };
+    
     handleChange(event) {
         event.preventDefault();
         this.setState({
             seconds: event.target.value * 60
         });
+    
     }
 
     getSeconds() {
@@ -32,7 +61,7 @@ class Clock extends Component {
 
     render () {
         return (
-            <form> 
+            <div> 
                 <div className='clockBox'>
                     <input 
                         className='clockDisplay'
@@ -40,12 +69,11 @@ class Clock extends Component {
                         value={this.state.value}
                         onChange={this.handleChange}>
                     </input>
-                     minutes
+                        minutes
                 </div>
-                <Countdown seconds={this.state.seconds} getSeconds={this.getSeconds}/>
-                {/*m: {this.state.time.m} s: {this.state.time.s}*/}
+                <Countdown seconds={this.state.seconds} logTime={60} getSeconds={this.getSeconds}/>
                 
-            </form>
+            </div>
         )
     }
 }
