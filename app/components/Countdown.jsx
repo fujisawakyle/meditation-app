@@ -31,7 +31,7 @@ class Countdown extends Component {
   // This is what was missing to update this component when the props.seconds changes
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.seonds !== this.props.seconds) {
+    if (nextProps.seconds !== this.props.seconds) {
       this.setState({ seconds: nextProps.seconds })
     }
   }
