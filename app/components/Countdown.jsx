@@ -8,13 +8,15 @@ class Countdown extends Component {
       time: {}, 
       seconds: props.seconds, 
       logTime: props.logTime,
-      showTime: false, 
-      showInput: props.input
+      showTime: false,
+      startToggle: true
     };
 
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
     this.countDown = this.countDown.bind(this);
+
   }
 
   secondsToTime(secs){
@@ -48,20 +50,27 @@ class Countdown extends Component {
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
-      
   }
 
   startTimer(e) {
-  
+    this.props.callback;
     this.setState({
       showTime: !this.state.showTime,
-      showInput: !this.state.showInput
+      startToggle: !this.state.startToggle
     })
     e.preventDefault();
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
-    }
-    
+    } 
+  }
+
+  resetTimer(e) {
+    clearInterval(this.timer);
+    this.timer = 0;
+    this.setState({
+      showTime: !this.state.showTime,
+      startToggle: !this.state.startToggle
+    })
   }
 
   countDown() {
@@ -91,9 +100,17 @@ class Countdown extends Component {
   }
 
   render() {
+    let startButton;
+    console.log(this.state.startToggle);
+    if (this.state.startToggle) {
+      startButton = <button onClick={this.startTimer}>Start</button>
+    }
+    else {
+      startButton = <button onClick={this.resetTimer}>Reset</button>
+    }
     return(
       <div>
-        <button onClick={this.startTimer}>Start</button>
+        {startButton}
         {this.state.showTime && 
           <ShowRemaining 
             hours={this.state.time.h} 

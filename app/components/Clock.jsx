@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ShowTime from './ShowTime';
 import Countdown from './Countdown';
 
 const style = {
@@ -19,15 +18,17 @@ class Clock extends Component {
             seconds: 0
         };
         this.timer = 0;
+
+        this.handleChange = this.handleChange.bind(this);
     };
     
-    /*handleChange(event) {
+    handleChange(event) {
         event.preventDefault();
         this.setState({
             seconds: event.target.value * 60
         });
     
-    }*/
+    }
 
     updater(dataToUpdate) {
         this.setState({
@@ -35,10 +36,16 @@ class Clock extends Component {
         })
     }
 
+    toggleInputShow() {
+        this.setState({
+            showInput: !this.state.showInput
+        })
+    }
+
     render () {
-        return (
-            <div> 
-                {/*<div className='clockBox'>
+        let timeInput;
+        if (this.state.showInput) {
+            timeInput = (<div className='clockBox'>
                     <input 
                         className='clockDisplay'
                         type='number'
@@ -46,9 +53,15 @@ class Clock extends Component {
                         onChange={this.handleChange}>
                     </input>
                         minutes
-                </div>*/}
-                {this.state.showInput && <ShowTime callback={this.updater} />}
-                <Countdown input={this.state.showInput} seconds={this.state.seconds} logTime={60} />
+                </div>)
+        }
+        else {
+            timeInput = <div> </div>
+        }
+        return (
+            <div> 
+                {timeInput}
+                <Countdown callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
                 
             </div>
         )
