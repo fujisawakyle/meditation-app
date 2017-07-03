@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Countdown from './Countdown';
-const PropTypes = require('prop-types');
 
 const style = {
     clockDisplay : {
@@ -14,38 +13,57 @@ class Clock extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { seconds: '' };
+        this.state = { 
+            showInput: true, 
+            seconds: 0
+        };
         this.timer = 0;
 
         this.handleChange = this.handleChange.bind(this);
     };
+    
     handleChange(event) {
         event.preventDefault();
         this.setState({
             seconds: event.target.value * 60
         });
+    
     }
 
-    getSeconds() {
+    updater(dataToUpdate) {
+        this.setState({
+            seconds: dataToUpdate
+        })
+    }
 
+    toggleInputShow() {
+        this.setState({
+            showInput: !this.state.showInput
+        })
     }
 
     render () {
-        return (
-            <form> 
-                <div className='clockBox'>
+        let timeInput;
+        if (this.state.showInput) {
+            timeInput = (<div className='clockBox'>
                     <input 
                         className='clockDisplay'
                         type='number'
                         value={this.state.value}
                         onChange={this.handleChange}>
                     </input>
-                     minutes
-                </div>
-                <Countdown seconds={this.state.seconds} getSeconds={this.getSeconds}/>
-                {/*m: {this.state.time.m} s: {this.state.time.s}*/}
+                        minutes
+                </div>)
+        }
+        else {
+            timeInput = <div> </div>
+        }
+        return (
+            <div> 
+                {timeInput}
+                <Countdown callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
                 
-            </form>
+            </div>
         )
     }
 }

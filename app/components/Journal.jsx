@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Entry from './Entry';
 
 const style = {
@@ -12,7 +12,7 @@ const style = {
     }
 }
 
-class Journal extends React.Component {
+class Journal extends Component {
     constructor(props) {
         super(props);
 
