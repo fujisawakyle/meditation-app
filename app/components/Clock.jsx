@@ -20,6 +20,7 @@ class Clock extends Component {
         this.timer = 0;
 
         this.handleChange = this.handleChange.bind(this);
+        this.toggleInputShow = this.toggleInputShow.bind(this);
     };
     
     handleChange(event) {
@@ -37,6 +38,7 @@ class Clock extends Component {
     }
 
     toggleInputShow() {
+        console.log('happened')
         this.setState({
             showInput: !this.state.showInput
         })
