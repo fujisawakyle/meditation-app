@@ -40,14 +40,10 @@ class Countdown extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.seconds !== this.props.seconds) {
-<<<<<<< HEAD
-      this.setState({ seconds: nextProps.seconds })
-=======
       this.setState({ 
         seconds: nextProps.seconds,
         logTime: nextProps.logTime 
       })
->>>>>>> 838cc4cdb066e6734f184e3445d36d8db2160cc7
     }
   }
 
