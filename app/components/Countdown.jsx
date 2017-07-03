@@ -53,7 +53,7 @@ class Countdown extends Component {
   }
 
   startTimer(e) {
-    this.props.callback;
+    this.props.callback();
     this.setState({
       showTime: !this.state.showTime,
       startToggle: !this.state.startToggle
@@ -101,7 +101,6 @@ class Countdown extends Component {
 
   render() {
     let startButton;
-    console.log(this.state.startToggle);
     if (this.state.startToggle) {
       startButton = <button onClick={this.startTimer}>Start</button>
     }
