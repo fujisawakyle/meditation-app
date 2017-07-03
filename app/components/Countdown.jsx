@@ -4,12 +4,12 @@ import ShowRemaining from './ShowRemaining'
 class Countdown extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = { 
       time: {}, 
       seconds: props.seconds, 
       logTime: props.logTime,
-      showTime: false 
+      showTime: false, 
+      showInput: props.input
     };
 
     this.timer = 0;
@@ -46,17 +46,18 @@ class Countdown extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
+      
   }
 
   startTimer(e) {
+  
     this.setState({
-      showTime: !this.state.showTime
+      showTime: !this.state.showTime,
+      showInput: !this.state.showInput
     })
     e.preventDefault();
-    this.props.getSeconds();
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
     }

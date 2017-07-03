@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ShowTime from './ShowTime';
 import Countdown from './Countdown';
 
 const style = {
@@ -9,60 +10,35 @@ const style = {
     }
 }
 
-//create a function for the rendered 'input' form
-//create a state with a toggle
-//call the input form when the toggle is true
-//turn off the input form when the button is clicked.
-
-/*class ClockBox extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            seconds: this.props.seconds
-        }
-
-        
-    }
-    
-    
-    render() {
-        return (
-           
-        )
-    }
-}
-*/
-
 class Clock extends Component {
     constructor(props) {
         super(props);
 
         this.state = { 
-            startToggle: true, 
-            seconds: '' 
+            showInput: true, 
+            seconds: 0
         };
         this.timer = 0;
-
-        this.handleChange = this.handleChange.bind(this);
     };
     
-    handleChange(event) {
+    /*handleChange(event) {
         event.preventDefault();
         this.setState({
             seconds: event.target.value * 60
         });
     
-    }
+    }*/
 
-    getSeconds() {
-
+    updater(dataToUpdate) {
+        this.setState({
+            seconds: dataToUpdate
+        })
     }
 
     render () {
         return (
             <div> 
-                <div className='clockBox'>
+                {/*<div className='clockBox'>
                     <input 
                         className='clockDisplay'
                         type='number'
@@ -70,8 +46,9 @@ class Clock extends Component {
                         onChange={this.handleChange}>
                     </input>
                         minutes
-                </div>
-                <Countdown seconds={this.state.seconds} logTime={60} getSeconds={this.getSeconds}/>
+                </div>*/}
+                {this.state.showInput && <ShowTime callback={this.updater} />}
+                <Countdown input={this.state.showInput} seconds={this.state.seconds} logTime={60} />
                 
             </div>
         )
