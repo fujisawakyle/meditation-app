@@ -9,23 +9,26 @@ class Entry extends Component {
         }
         
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event) {
         const value = event.target.value;
 
-        this.setState(function (){
-            return {
+        this.setState({
                 textEntry: value
-            }
+            
         })
     }
     handleSubmit(event){ 
+        event.preventDefault();
+        let journalEntry = this.state.textEntry;
+        alert('send info: ' + journalEntry);
         //set up an object so that we can send it.
         //store to server (API call)
     }
     render() {
         return (
-        <form onSubmit={this.handleSubmit}> 
+        <div> 
             <input 
                 type='text'
                 autoComplete='off'
@@ -34,11 +37,12 @@ class Entry extends Component {
             />
             <button
                 className='button'
-                type='submit'>
+                type='button'
+                onClick={this.handleSubmit}>
                     Save
             </button>
             
-        </form>  
+        </div>  
     )
   }
 }

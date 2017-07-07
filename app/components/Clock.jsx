@@ -38,7 +38,6 @@ class Clock extends Component {
     }
 
     toggleInputShow() {
-        console.log('happened')
         this.setState({
             showInput: !this.state.showInput
         })
@@ -63,7 +62,7 @@ class Clock extends Component {
         return (
             <div> 
                 {timeInput}
-                <Countdown callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
+                <Countdown input={this.state.showInput} callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
                 
             </div>
         )

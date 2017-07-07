@@ -9,7 +9,9 @@ class Countdown extends Component {
       seconds: props.seconds, 
       logTime: props.logTime,
       showTime: false,
-      startToggle: true
+      startToggle: true,
+      showInput: props.input,
+      timeTracked: 0
     };
 
     this.timer = 0;
@@ -56,7 +58,7 @@ class Countdown extends Component {
     this.props.callback();
     this.setState({
       showTime: !this.state.showTime,
-      startToggle: !this.state.startToggle
+      startToggle: !this.state.startToggle,
     })
     e.preventDefault();
     if (this.timer == 0) {
@@ -65,11 +67,12 @@ class Countdown extends Component {
   }
 
   resetTimer(e) {
+    this.props.callback();
     clearInterval(this.timer);
     this.timer = 0;
     this.setState({
       showTime: !this.state.showTime,
-      startToggle: !this.state.startToggle
+      startToggle: !this.state.startToggle,
     })
   }
 
@@ -90,12 +93,13 @@ class Countdown extends Component {
 
     //log time every 1 minute
     if (log === 0) {
-      alert('logged a minute');
+      
       //add 1 min to today's time.
       this.setState({
-        logTime: 60
+        logTime: 60,
+        timeTracked: this.state.timeTracked + 1
       })
-      
+      alert(this.state.timeTracked);
     }
   }
 
