@@ -14,7 +14,6 @@ class Day extends Component {
         <Timer />
         <Journal />
         <WeekDisplay />
-        
       </div>  
     )
   }

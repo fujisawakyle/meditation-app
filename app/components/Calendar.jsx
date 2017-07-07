@@ -4,6 +4,15 @@ import DayPicker from 'react-day-picker';
 class Calendar extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      dateSelected: ''
+    }
+
+    this.day = this.day.bind(this);
+  }
+  day() {
+    alert(day)
   }
   render () {
     return (
@@ -15,6 +24,7 @@ class Calendar extends Component {
             new Date(2017, 6, 1),
             new Date(2017, 6, 2),
           ]}
+          onDayClick={day => alert(day)}
         />
       </div>
   );
