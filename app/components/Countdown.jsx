@@ -6,7 +6,7 @@ class Countdown extends Component {
     super(props);
     this.state = { 
       time: {}, 
-      seconds: props.seconds, 
+      seconds: props.seconds,
       logTime: props.logTime,
       showTime: false,
       startToggle: true,
@@ -15,10 +15,7 @@ class Countdown extends Component {
     };
 
     this.timer = 0;
-    this.startTimer = this.startTimer.bind(this);
-    this.resetTimer = this.resetTimer.bind(this);
-    this.countDown = this.countDown.bind(this);
-
+    
   }
 
   secondsToTime(secs){
@@ -54,7 +51,7 @@ class Countdown extends Component {
     this.setState({ time: timeLeftVar });
   }
 
-  startTimer(e) {
+  startTimer =(e) => {
     this.props.callback();
     this.setState({
       showTime: !this.state.showTime,
@@ -66,7 +63,7 @@ class Countdown extends Component {
     } 
   }
 
-  resetTimer(e) {
+  resetTimer = (e) => {
     this.props.callback();
     clearInterval(this.timer);
     this.timer = 0;
@@ -76,7 +73,7 @@ class Countdown extends Component {
     })
   }
 
-  countDown() {
+  countDown = () => {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
     let log = this.state.logTime - 1;
@@ -94,7 +91,7 @@ class Countdown extends Component {
     //log time every 1 minute
     if (log === 0) {
       
-      //add 1 min to today's time.
+      //API call - add 1 min to today's time.
       this.setState({
         logTime: 60,
         timeTracked: this.state.timeTracked + 1
@@ -104,16 +101,20 @@ class Countdown extends Component {
   }
 
   render() {
-    let startButton;
-    if (this.state.startToggle) {
-      startButton = <button onClick={this.startTimer}>Start</button>
-    }
-    else {
-      startButton = <button onClick={this.resetTimer}>Reset</button>
+    let timerDisplay;
+    if (this.props.today && this.props.duration) {
+      if (this.state.startToggle) {
+        timerDisplay = <button onClick={this.startTimer}>Start</button>
+      }
+      else {
+        timerDisplay = <button onClick={this.resetTimer}>Reset</button>
+      }
+    } else {
+      timerDisplay = <div> {this.props.duration} </div>
     }
     return(
       <div>
-        {startButton}
+        {timerDisplay}
         {this.state.showTime && 
           <ShowRemaining 
             hours={this.state.time.h} 

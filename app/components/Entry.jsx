@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {submitJournal} from '../actions/index';
+
+/*make an API call and if the journal associated with this date is empty, then render
+blank input field, if filled, display that in the input field.*/
 
 class Entry extends Component {
     constructor(props) {
@@ -8,10 +14,8 @@ class Entry extends Component {
             textEntry: ''
         }
         
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event) {
+    handleChange = (event) => {
         const value = event.target.value;
 
         this.setState({
@@ -19,7 +23,7 @@ class Entry extends Component {
             
         })
     }
-    handleSubmit(event){ 
+    handleSubmit = (event) => { 
         event.preventDefault();
         let journalEntry = this.state.textEntry;
         alert('send info: ' + journalEntry);
@@ -31,6 +35,7 @@ class Entry extends Component {
         <div> 
             <input 
                 type='text'
+                placeholder="Today's reflections: "
                 autoComplete='off'
                 value={this.state.textEntry}
                 onChange={this.handleChange}
@@ -39,6 +44,7 @@ class Entry extends Component {
                 className='button'
                 type='button'
                 onClick={this.handleSubmit}>
+                {/*onClick={() => this.props.submitJournal(entry)}*/}
                     Save
             </button>
             
@@ -47,4 +53,15 @@ class Entry extends Component {
   }
 }
 
-export default Entry;
+function mapStateToProps(state) {
+    return {
+        entries: state.entries
+    };
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({submitJournal: submitJournal}, dispatch)
+}
+
+
+export default connect(mapStateToProps, matchDispatchToProps)(Entry);

@@ -45,7 +45,7 @@ class Clock extends Component {
 
     render () {
         let timeInput;
-        if (this.state.showInput) {
+        if (this.state.showInput && this.props.today) {
             timeInput = (<div className='clockBox'>
                     <input 
                         className='clockDisplay'
@@ -62,7 +62,7 @@ class Clock extends Component {
         return (
             <div> 
                 {timeInput}
-                <Countdown input={this.state.showInput} callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
+                <Countdown today={this.props.today} duration={this.props.duration} callback={this.toggleInputShow} seconds={this.state.seconds} logTime={60} />
                 
             </div>
         )

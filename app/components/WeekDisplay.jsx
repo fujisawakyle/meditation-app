@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import Graph from './Graph';
 
+const style = {
+  weekDisplay : {
+      backgroundColor: '#dcf',
+      textAlign: 'center',
+      border: '1px solid black',
+      borderRadius: '10px',
+      paddingBottom: '10px'
+  }
+}
+
 class WeekDisplay extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +22,7 @@ class WeekDisplay extends Component {
 
   render() {
     return (
-        <div>
+        <div style={style.weekDisplay}>
             <h3> This week's meditation </h3>
             <Graph />
         </div>

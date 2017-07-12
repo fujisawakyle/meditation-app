@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 
+//make API call to update state.
+
+const style = {
+    graph : {
+        padding: '10px'
+    }
+}
+
 class Graph extends Component {
   constructor(props) {
     super(props);
@@ -37,13 +45,12 @@ class Graph extends Component {
 
   render() {
     return (
-        <div>
+        <div style={style.graph}>
             <Bar
                 data = {this.state.chartData}
                 options = {this.state.options}
                 width = {100}
                 height = {50} />
-                <h1>hello</h1>
         </div>
     )
   }

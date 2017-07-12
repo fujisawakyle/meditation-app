@@ -27,7 +27,7 @@ class Journal extends Component {
     }
     render() {
         return (
-        <div style={style.journalBox} className='journalBox'> 
+        <div style={style.journalBox} className='column'> 
             <h3>Journal</h3>
             <Entry />
         </div>  
