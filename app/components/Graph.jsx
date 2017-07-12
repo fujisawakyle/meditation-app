@@ -5,7 +5,7 @@ import {Bar} from 'react-chartjs-2';
 
 const style = {
     graph : {
-        padding: '10px'
+        
     }
 }
 

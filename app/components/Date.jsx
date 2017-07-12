@@ -26,7 +26,7 @@ class Date extends Component {
         return (
             <div>
                 {dateDisplay}
-                {this.state.showCal && <Calendar/>} 
+                {this.state.showCal && <Calendar cal={this.state.showCal}/>} 
             </div>
         )
     }

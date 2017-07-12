@@ -104,7 +104,7 @@ class Calendar extends Component {
           </div>
           <div style={style.second}>
           <div style={style.journal}>
-          <Journal entry='you rock' />
+          <Journal entry='' />
           </div>
           </div>
         </div>
