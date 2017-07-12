@@ -6,6 +6,13 @@ import {submitJournal} from '../actions/index';
 /*make an API call and if the journal associated with this date is empty, then render
 blank input field, if filled, display that in the input field.*/
 
+const style = {
+    input : {
+        height : '100px',
+        textAlign: 'top'
+    }
+}
+
 class Entry extends Component {
     constructor(props) {
         super(props);
@@ -33,12 +40,12 @@ class Entry extends Component {
     render() {
         return (
         <div> 
-            <input 
-                type='text'
+            <textarea 
                 placeholder="Today's reflections: "
                 autoComplete='off'
                 value={this.state.textEntry}
                 onChange={this.handleChange}
+                style={style.input}
             />
             <button
                 className='button'

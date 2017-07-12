@@ -5,9 +5,10 @@ import Countdown from './Countdown';
 const style = {
     timerBox : {
         backgroundColor: '#fdf',
-        height: '100px',
+        height: '120px',
         width: '200px',
         textAlign: 'center',
+        margin: 'auto',
         border: '1px solid black',
         borderRadius: '10px'
     }

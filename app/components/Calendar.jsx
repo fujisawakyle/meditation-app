@@ -5,12 +5,18 @@ import Journal from './Journal';
 import WeekDisplay from './WeekDisplay';
 
 const style = {
+    calendar : {
+      textAlign: 'center',
+    },
     container : {
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      margin: 'auto',
     },
     first : {
-      flex: '1'
+      display: 'in-line',
+      flex: '1',
+      minWidth: '200'
     },
     second : {
       flex: '1'
@@ -98,9 +104,7 @@ class Calendar extends Component {
           <div style={style.timer}>
           <Timer today={this.state.today} duration={30} />
           </div>
-          <div>
-             <WeekDisplay />
-          </div>
+          <WeekDisplay />
           </div>
           <div style={style.second}>
           <div style={style.journal}>
@@ -112,15 +116,17 @@ class Calendar extends Component {
     }
     return (
       <div>
-        <DayPicker
-          initialMonth={new Date(2017, 6)}
-          todayButton="Go to Today"
-          selectedDays={[
-            new Date(2017, 6, 1),
-            new Date(2017, 6, 2),
-          ]}
-          onDayClick={day => this.chooseDay(day)}
-        />
+        <div style={style.calendar}>
+          <DayPicker
+            initialMonth={new Date(2017, 6)}
+            todayButton="Go to Today"
+            selectedDays={[
+              new Date(2017, 6, 1),
+              new Date(2017, 6, 2),
+            ]}
+            onDayClick={day => this.chooseDay(day)}
+          />
+        </div>
         {meditationUI}
       </div>
   );
