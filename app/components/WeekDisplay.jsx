@@ -24,7 +24,7 @@ class WeekDisplay extends Component {
     return (
         <div style={style.weekDisplay}>
             <h3> This week's meditation </h3>
-            <Graph />
+            <Graph dates={this.props.dates}/>
         </div>
     )
   }

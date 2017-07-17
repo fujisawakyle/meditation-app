@@ -3,18 +3,21 @@ import Timer from './Timer';
 import Journal from './Journal';
 import WeekDisplay from './WeekDisplay';
 import Date from './Date';
-import Calendar from './Calendar'
+import Calendar from './Calendar';
+import Login from './Login'
 
 require('babel-polyfill');
 
-class Day extends Component {
+//pull data from server and put in store
+
+class App extends Component {
   render() {
     return (
       <div>
-        <Calendar />
+        <Login />
       </div>  
     )
   }
 }
 
-export default Day;
+export default App;

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Day from './components/Day'
+import App from './components/App'
 import Timer from './components/Timer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -12,7 +12,7 @@ const store = createStore(allReducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Day />
+    <App />
   </Provider>
   , document.getElementById('app')
 );

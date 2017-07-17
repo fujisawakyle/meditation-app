@@ -20,17 +20,13 @@ class Journal extends Component {
         this.state = {
             
         }
-        
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(event) {
-       
-    }
+    
     render() {
         return (
         <div style={style.journalBox}> 
             <h3>Journal</h3>
-            <Entry />
+            <Entry entry={this.props.entry}/>
         </div>  
     )
   }

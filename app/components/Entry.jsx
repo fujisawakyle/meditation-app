@@ -18,21 +18,28 @@ class Entry extends Component {
         super(props);
 
         this.state = {
-            textEntry: ''
+            entry: props.entry
         }
         
     }
+     componentWillReceiveProps(nextProps) {
+        if (nextProps.entry !== this.props.entry) {
+            this.setState({
+                entry: nextProps.entry,
+            })
+        }
+    } 
     handleChange = (event) => {
         const value = event.target.value;
 
         this.setState({
-                textEntry: value
+                entry: value
             
         })
     }
     handleSubmit = (event) => { 
         event.preventDefault();
-        let journalEntry = this.state.textEntry;
+        let journalEntry = this.state.entry;
         alert('send info: ' + journalEntry);
         //set up an object so that we can send it.
         //store to server (API call)
@@ -41,9 +48,9 @@ class Entry extends Component {
         return (
         <div> 
             <textarea 
-                placeholder="Today's reflections: "
+                placeholder="Today's meditation was:"
                 autoComplete='off'
-                value={this.state.textEntry}
+                value={this.state.entry}
                 onChange={this.handleChange}
                 style={style.input}
             />
@@ -51,7 +58,6 @@ class Entry extends Component {
                 className='button'
                 type='button'
                 onClick={this.handleSubmit}>
-                {/*onClick={() => this.props.submitJournal(entry)}*/}
                     Save
             </button>
             
