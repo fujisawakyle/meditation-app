@@ -12,7 +12,8 @@ const store = createStore(allReducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App
+      url='http://localhost:3001'/>
   </Provider>
   , document.getElementById('app')
 );
