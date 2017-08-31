@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {submitJournal} from '../actions/index';
+// import {submitJournal} from '../actions/index';
 
 /*make an API call and if the journal associated with this date is empty, then render
 blank input field, if filled, display that in the input field.*/
@@ -20,7 +20,7 @@ class Entry extends Component {
         this.state = {
             entry: props.entry
         }
-        
+
     }
      componentWillReceiveProps(nextProps) {
         if (nextProps.entry !== this.props.entry) {
@@ -28,16 +28,16 @@ class Entry extends Component {
                 entry: nextProps.entry,
             })
         }
-    } 
+    }
     handleChange = (event) => {
         const value = event.target.value;
 
         this.setState({
                 entry: value
-            
+
         })
     }
-    handleSubmit = (event) => { 
+    handleSubmit = (event) => {
         event.preventDefault();
         let journalEntry = this.state.entry;
         alert('send info: ' + journalEntry);
@@ -46,8 +46,8 @@ class Entry extends Component {
     }
     render() {
         return (
-        <div> 
-            <textarea 
+        <div>
+            <textarea
                 placeholder="Today's meditation was:"
                 autoComplete='off'
                 value={this.state.entry}
@@ -60,21 +60,21 @@ class Entry extends Component {
                 onClick={this.handleSubmit}>
                     Save
             </button>
-            
-        </div>  
+
+        </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-    return {
-        entries: state.entries
-    };
-}
+// function mapStateToProps(state) {
+//     return {
+//         entries: state.entries
+//     };
+// }
 
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({submitJournal: submitJournal}, dispatch)
-}
+// function matchDispatchToProps(dispatch) {
+//     return bindActionCreators({submitJournal: submitJournal}, dispatch)
+// }
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(Entry);
+export default Entry // connect(mapStateToProps, matchDispatchToProps)(Entry);
